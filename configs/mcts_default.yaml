@@ -1,0 +1,12 @@
+seed: 0
+num_simulations: 200
+c_puct: 1.5
+dirichlet_alpha: 0.3
+exploration_frac: 0.25
+max_depth: 64
+temperature: 1.0
+policy_ckpt: runs/policy.pt
+value_ckpt: runs/value.pt
+constraints:
+  forbid_shorts: true
+  require_bias_paths: true
