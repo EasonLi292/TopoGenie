@@ -1,5 +1,5 @@
 # =======================================
-# File: topozero/vocab_and_adjacency.py
+# File: topogenie/vocab.py
 # =======================================
 """
 Defines the AnalogGenie-matching token vocabulary and a minimal adjacency/scaffold

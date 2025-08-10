@@ -13,7 +13,7 @@ from typing import List, Dict, Set, Tuple, Optional
 from dataclasses import dataclass, field
 import math
 import random
-from .vocab_and_adjacency import STOI, ITOS, TOKENS, VOCAB_SIZE, initial_adjacency, add_edge, all_candidate_new_pins
+from .vocab import STOI, ITOS, TOKENS, VOCAB_SIZE, initial_adjacency, add_edge, all_candidate_new_pins
 
 Edge = Tuple[str, str]  # undirected conceptual edge (ordered as (min,max) for hashing)
 
@@ -59,7 +59,7 @@ class EulerState:
             add_edge(ns.adjacency, self.current_pin, pin)
             ns.seq.append(action)
             # mark device as used
-            from .vocab_and_adjacency import device_root
+            from .vocab import device_root
             root = device_root(pin)
             if "_" in pin:
                 ns.used_device_roots.add(root)
@@ -72,7 +72,7 @@ class EulerState:
         ns.seq.append(nb)
         ns.current_pin = nb
         # Track device usage if we land on a device pin
-        from .vocab_and_adjacency import device_root
+        from .vocab import device_root
         root = device_root(nb)
         if "_" in nb:
             ns.used_device_roots.add(root)
@@ -225,3 +225,4 @@ class MCTS:
         # Reward from SPICE confirmation (or heuristic fallback)
         from .netlist_io import score_circuit
         return score_circuit(s)
+

@@ -4,8 +4,8 @@ Tiny entrypoint to run a few MCTS simulations and print a candidate sequence + r
 
 from __future__ import annotations
 from typing import Optional
-from .euler_mcts import EulerState, MCTS
-from .vocab_and_adjacency import initial_adjacency
+from topogenie.euler_mcts import EulerState, MCTS
+from topogenie.vocab import initial_adjacency
 
 def main(num_simulations: int = 200) -> None:
     # Start at VSS with only supplies in the graph
@@ -25,7 +25,7 @@ def main(num_simulations: int = 200) -> None:
             break
 
     # Score the final state
-    from .netlist_io import score_circuit
+    from topogenie.netlist_io import score_circuit
     reward = score_circuit(state)
 
     print("Actions:")
