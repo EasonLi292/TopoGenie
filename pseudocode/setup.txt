@@ -1,0 +1,54 @@
+total devices: 
+NM{i}, NM{i}_D, NM{i}_G, NM{i}_S, NM{i}_B; 1…34 
+PM{i}, PM{i}_D, PM{i}_G, PM{i}_S, PM{i}_B; 1…34
+NPN{i}, NPN{i}_C, NPN{i}_B, NPN{i}_E; 1…26 
+PNP{i}, PNP{i}_C, PNP{i}_B, PNP{i}_E; 1…26
+R{i}, R{i}_P, R{i}_N; 1…27
+C{i}, C{i}_P, C{i}_N; 1…15 
+L{i}, L{i}_P, L{i}_N — i; 1…23
+DIO{i}, DIO{i}_P, DIO{i}_N; 1…7
+XOR1, XOR1_A, XOR1_B, XOR1_VDD, XOR1_VSS, XOR1_Y 
+PFD1, PFD1_A, PFD1_B, PFD1_QA, PFD1_QB, PFD1_VDD, PFD1_VSS 
+INVERTER{i}, INVERTER{i}_A, INVERTER{i}_Q, INVERTER{i}_VDD, INVERTER{i}_VSS; 1…10 
+TRANSMISSION_GATE{i}, …_A, …_B, …_C, …_VDD, …_VSS; 1…12
+VIN{i}; 1…10
+IIN{i}; 1…2
+VOUT{i}; 1…6
+IOUT{i}; 1…4 
+VB{i}; 1…10 
+IB{i}; 1…6 
+VCONT{i}; 1…20 
+VCLK{i}; 1…8 
+VCM{i}; 1…2 
+VREF{i}; 1…2 
+IREF{i}; 1…2 
+VRF{i}; 1…2 
+VLO{i}; 1…4 
+VIF{i}; 1…2 
+VBB{i}; 1…4
+LOGICA{i}; 1…2 
+LOGICB{i}; 1…2 
+LOGICD{i}; 1…2 
+LOGICF{i}; 1…2 
+LOGICG{i}; 1…2 
+LOGICQ{i}; 1…2
+LOGICQA1 
+LOGICQB1 
+VLATCH{i}; 1…2
+VHOLD1
+VTRACK{i}; 1…2
+Special: VDD, VSS, EoS
+
+Rules:
+Start with VSS
+Start with first component (NM1); 
+unavailable list: NM{i}, PM{i}..., those that aren't 1, 2 become available after 1 is placed
+if last move is NM1, next move must be NM1_D, NM1_P, NM1_B, or NM1_G
+
+use SPICETOGRAPH, run on 1000+ example circuits with positive rewards, 
+reward these runs, so model is partially tuned
+
+build GRAPHTOSPICE, allowing MCTS to explore new topologies and validating them using SPICE
+
+Things to consider: 
+heuristics, how feasible is it to run a GNN at each step, if not GNN, what type of encoding for states
