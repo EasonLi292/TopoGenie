@@ -60,7 +60,7 @@ EXTERNALS: Dict[str, int] = {
 }
 SINGLE_EXTERNALS = ("LOGICQA1", "LOGICQB1", "VHOLD1",)
 
-SPECIAL = ("VDD", "VSS", "EoS")
+SPECIAL = ("VDD", "VSS", 'TRUNCATE')
 
 
 # ------------------------------
